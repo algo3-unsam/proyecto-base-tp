@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: jacoco-report
-          path: .github/badges/jacoco.svg
+          path: /.github/badges/jacoco.svg
