@@ -3,11 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 val kotlinVersion: String by project
 
 plugins {
-    id("org.springframework.boot") version "2.5.5"
+    id("org.springframework.boot") version "2.7.1"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     war
-    kotlin("jvm") version("1.5.31")
-    kotlin("plugin.spring") version("1.5.31")
+    kotlin("jvm") version("1.7.10")
+    kotlin("plugin.spring") version("1.7.10")
     jacoco
 }
 
@@ -19,16 +19,14 @@ repositories {
     mavenCentral()
 }
 
-val springBootVersion = "2.5.5"
-val swaggerVersion = "3.0.0"
+val springBootVersion = "2.7.1"
 
 dependencies {
     implementation("org.uqbar-project:uqbar-domain:3.6.3")
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("io.springfox:springfox-boot-starter:$swaggerVersion")
-    implementation("io.springfox:springfox-swagger-ui:$swaggerVersion")
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:$springBootVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
@@ -36,7 +34,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11"
+        jvmTarget = "14"
     }
 }
 
