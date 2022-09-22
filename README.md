@@ -4,7 +4,14 @@
 
 - El build de Github Actions funciona de una, no tenés que configurar nada
 - También el coverage se genera solito si respetás las dependencias que están en el `build.gradle.kts`
+- en el archivo [settings.gradle.kts](./settings.gradle.kts) que está en el raíz tenés que cambiarle al nombre de tu proyecto
+
+```kts
+rootProject.name = "proyecto-base-tp"
+```
+
 - Para los badges de build y coverage (las imágenes que ves con el build passing y el % en este README), tenés que reemplazar `tp-recetas-2020-gr-xx` por el repositorio correspondiente.
+
 ## El proyecto
 
 Antes que nada, la idea de este proyecto es que te sirva como base para poder desarrollar el backend en la materia [Algoritmos 3](https://algo3.uqbar-project.org/). Por eso está basado en _Maven_, y el archivo `build.gradle.kts` tiene dependencias a
@@ -14,7 +21,7 @@ Antes que nada, la idea de este proyecto es que te sirva como base para poder de
 - JaCoCo (Java Code Coverage), para que agregues el % de cobertura en el README
 - Swagger, para documentar tus endpoints
 - la versión de Kotlin que estaremos usando
-- además de estar basado en la JDK 11
+- además de estar basado en la JDK 14
 
 ### Pasos para adaptar tu proyecto de Algo2 a Algo3
 
