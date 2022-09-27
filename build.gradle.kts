@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 val kotlinVersion: String by project
 
 plugins {
-    id("org.springframework.boot") version "2.7.1"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id("org.springframework.boot") version "2.7.4"
+    id("io.spring.dependency-management") version "1.0.14.RELEASE"
     war
     kotlin("jvm") version("1.7.10")
     kotlin("plugin.spring") version("1.7.10")
@@ -19,16 +19,19 @@ repositories {
     mavenCentral()
 }
 
-val springBootVersion = "2.7.1"
+val springBootVersion = "2.7.4"
+val kotestVersion = "5.4.2"
 
 dependencies {
-    implementation("org.uqbar-project:uqbar-domain:3.6.3")
     implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.9")
+    implementation("org.springdoc:springdoc-openapi-ui:1.6.11")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat:$springBootVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+    testImplementation("io.mockk:mockk:1.12.8")
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
 }
 
 tasks.withType<KotlinCompile> {
