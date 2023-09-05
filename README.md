@@ -10,18 +10,18 @@
 rootProject.name = "proyecto-base-tp"
 ```
 
-- Para los badges de build y coverage (las imágenes que ves con el build passing y el % en este README), tenés que reemplazar `tp-recetas-2020-gr-xx` por el repositorio correspondiente.
+- Para los badges de build y coverage (las imágenes que ves con el build passing y el % en este README), tenés que reemplazar `tp-worldcapp-2023-gr-xx` por el repositorio correspondiente.
 
 ## El proyecto
 
 Antes que nada, la idea de este proyecto es que te sirva como base para poder desarrollar el backend en la materia [Algoritmos 3](https://algo3.uqbar-project.org/). Por eso está basado en _Maven_, y el archivo `build.gradle.kts` tiene dependencias a
 
 - Spring Boot
-- JUnit 5
+- JUnit
 - JaCoCo (Java Code Coverage), para que agregues el % de cobertura en el README
 - Swagger, para documentar tus endpoints
 - la versión de Kotlin que estaremos usando
-- además de estar basado en la JDK 14
+- además de estar basado en la JDK 17
 
 ### Pasos para adaptar tu proyecto de Algo2 a Algo3
 
