@@ -19,9 +19,8 @@ Antes que nada, la idea de este proyecto es que te sirva como base para poder de
 - Spring Boot
 - JUnit
 - JaCoCo (Java Code Coverage), para que agregues el % de cobertura en el README
-- Swagger, para documentar tus endpoints
 - la versión de Kotlin que estaremos usando
-- además de estar basado en la JDK 17
+- además de estar basado en la JDK 21
 
 ### Pasos para adaptar tu proyecto de Algo2 a Algo3
 
@@ -29,9 +28,13 @@ El proceso más simple para que puedan reutilizar el proyecto de Algo2 en Algo3 
 
 - generar una copia de todo el directorio que contiene este proyecto
 - eliminar la carpeta `.git` que está oculta
-- copian del proyecto de Algo2 las carpetas `src/main/kotlin` y `src/test/kotlin` y la ubican en el mismo lugar en el proyecto de Algo3
+- copiar del proyecto de Algo2 las carpetas `src/main/kotlin` y `src/test/kotlin` y la ubican en el mismo lugar en el proyecto de Algo3
+- apuntar al proyecto de github mediante
+
+```bash
+git remote add origin ...dirección del repo git...
+```
 
 El proyecto tiene un main, en la clase `ProyectoApplication`, que levantará el servidor web en el puerto 9000, tienen que renombrarlo al TP actual. También tenés
 
-- un endpoint de ejemplo, que viene configurado con la anotación de Swagger (`@ApiOperation`)
 - un test de integración de ejemplo (en `src/test/kotlin`)
