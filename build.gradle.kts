@@ -1,10 +1,9 @@
 plugins {
-    id("org.springframework.boot") version "3.3.1"
-    id("io.spring.dependency-management") version "1.1.5"
-    kotlin("jvm") version "1.9.24"
-    kotlin("plugin.spring") version "1.9.24"
+    id("org.springframework.boot") version "4.1.1"
+    id("io.spring.dependency-management") version "1.1.7"
+    kotlin("jvm") version "2.4.20"
+    kotlin("plugin.spring") version "2.4.20"
     jacoco
-    war
 }
 
 group = "ar.edu.unsam"
@@ -21,24 +20,23 @@ repositories {
 }
 
 dependencies {
-    val kotestVersion = "5.8.0"
+    val kotestVersion = "6.2.5"
 
     // básicos de cualquier proyecto Spring Boot
-    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    implementation("tools.jackson.module:jackson-module-kotlin")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.mockk:mockk:1.13.9")
+    testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("io.mockk:mockk:1.14.11")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
-    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
 }
 
 kotlin {
@@ -55,19 +53,16 @@ tasks.test {
     finalizedBy(tasks.jacocoTestReport)
 }
 
+jacoco {
+    toolVersion = "0.8.15"
+}
+
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
-}
-
-jacoco {
-    toolVersion = "0.8.12"
-}
-
-tasks.jacocoTestReport {
     classDirectories.setFrom(
         files(classDirectories.files.map {
             fileTree(it) {
-                exclude("**/config/**", "**/entity/**", "**/*Application*.*", "**/ServletInitializer.*")
+                exclude("**/config/**", "**/entity/**", "**/*Application*.*")
             }
         })
     )
