@@ -15,21 +15,21 @@ jobs:
   gradle:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
         with:
           distribution: 'temurin'
           java-version: '21'
 
       # Execute Gradle commands in GitHub Actions workflows
-      - uses: gradle/actions/setup-gradle@v3
+      - uses: gradle/actions/setup-gradle@v6
 
       - name: Execute tests with coverage
         run: ./gradlew runOnGitHub
 
       - name: Generate JaCoCo Badge
         id: jacoco
-        uses: cicirello/jacoco-badge-generator@v2.11.0
+        uses: cicirello/jacoco-badge-generator@v2.12.1
         with:
           generate-branches-badge: true
           jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
@@ -44,14 +44,14 @@ jobs:
           ls -la .github
 
       - name: Commit and push the badge (if it changed)
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v11
         with:
           default_author: github_actions
           message: 'commit badge'
           add: '*.svg'
 
       - name: Upload JaCoCo coverage report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: jacoco-report
           path: build/reports/jacoco/
