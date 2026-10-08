@@ -6,3 +6,4 @@ spring:
       whitelabel:
         enabled: false
       include-message: always
+      include-binding-errors: always
